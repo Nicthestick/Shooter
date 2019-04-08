@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.456, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409796}
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   cameraMain: {fileID: 0}
-  jumpForce: 15000
+  jumpForce: 30000
   cameraPosition: {x: 0, y: 0, z: 0}
   maxSpeed: 5
   deaccelerationSpeed: 20
