@@ -79,4 +79,11 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         PhotonNetwork.LoadLevel(multiplayerScene); 
     }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        Debug.Log(otherPlayer.NickName + " has left the game");
+        
+    }
 }

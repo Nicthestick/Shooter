@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public class BulletScript : MonoBehaviour {
 
@@ -15,27 +16,53 @@ public class BulletScript : MonoBehaviour {
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
 
-	/*
+
+    private PhotonView PV;
+    private AvatarSetup avatarsetup;
+
+    /*
 	* Uppon bullet creation with this script attatched,
 	* bullet creates a raycast which searches for corresponding tags.
 	* If raycast finds somethig it will create a decal of corresponding tag.
 	*/
-	void Update () {
 
-		if(Physics.Raycast(transform.position, transform.forward,out hit, maxDistance, ~ignoreLayer)){
-			if(decalHitWall){
-				if(hit.transform.tag == "LevelPart"){
-					Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-				if(hit.transform.tag == "Dummie"){
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
-				}
-			}		
-			Destroy(gameObject);
-		}
-		Destroy(gameObject, 0.1f);
-	}
+    void Start()
+    {
+        PV = GetComponent<PhotonView>();
+    }
 
-}
+    void Update () {
+
+        if (!PV.IsMine)
+        {
+            return;
+        }
+
+        PV.RPC("RPC_shooting", RpcTarget.All);
+
+    }
+
+    [PunRPC]
+    void RPC_shooting()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ~ignoreLayer))
+        {
+            if (decalHitWall)
+            {
+                if (hit.transform.tag == "LevelPart")
+                {
+                    Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
+                    Destroy(gameObject);
+                }
+                if (hit.transform.tag == "Avatar")
+                {
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(gameObject);
+                    hit.transform.gameObject.GetComponent<AvatarSetup>().playerHealth -= avatarsetup.playerDmg;
+                }
+            }
+            Destroy(gameObject);
+        }
+        Destroy(gameObject, 0.1f);
+    }
+    }

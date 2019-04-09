@@ -9,16 +9,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3625990968902028404}
-  - component: {fileID: 3534834129590733643}
   - component: {fileID: 8847048374592594158}
   - component: {fileID: 9171083968089542022}
   - component: {fileID: 5457538181800778999}
   - component: {fileID: 604622389599171316}
   - component: {fileID: 1133278268966757986}
   - component: {fileID: 5335483768878899180}
+  - component: {fileID: 5246386798459504250}
+  - component: {fileID: 3198010055106862801}
+  - component: {fileID: 4676672258882757713}
   m_Layer: 0
   m_Name: PlayerAvatar
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,14 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3534834129590733643
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969287131915688122}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8847048374592594158
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52,7 +46,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6969287131915688122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -164,3 +158,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 20
   rotationSpeed: 20
+--- !u!114 &5246386798459504250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969287131915688122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52349e0e07c57af41b5a4292dbd081e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterValue: 0
+  playerHealth: 100
+  playerDmg: 10
+  myChar: {fileID: 0}
+  mycam: {fileID: 0}
+  myAL: {fileID: 0}
+--- !u!33 &3198010055106862801
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969287131915688122}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4676672258882757713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969287131915688122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63786290f5fe1a4eb18ff76456d5c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayOrigin: {fileID: 0}
